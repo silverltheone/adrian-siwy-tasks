@@ -1,5 +1,7 @@
 package com.crud.tasks.domain;
 
+import lombok.AllArgsConstructor;
+
 import javax.persistence.*;
 
 //@AllArgsConstructor
