@@ -45,4 +45,24 @@ public class MailCreatorService {
         context.setVariable("application_functionality", functionality);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
+
+    public String dailyEmail(String message) {
+        List<String> functionality = new ArrayList<>();
+        functionality.add("You can manage your tasks");
+        functionality.add("Provides connection with Trello Account");
+        functionality.add("Application allows sending tasks to Trello");
+
+        Context context = new Context();
+        context.setVariable("message", message);
+        context.setVariable("task_url", "http://localhost:8888/tasks_frontend/");
+        context.setVariable("button", "Visit website");
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("goodbye_message", "Pozdrawiamy - zespół CRUD");
+        context.setVariable("company_details_name", companyConfig.getCompanyName());
+        context.setVariable("show_button", false);
+        context.setVariable("is_friend", false);
+        context.setVariable("admin_config", adminConfig);
+        context.setVariable("application_functionality", functionality);
+        return templateEngine.process("mail/daily-mail", context);
+    }
 }
